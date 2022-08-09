@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../src/public')));
 
 // TODO: Add routing middleware here
 app.use('/jobs', jobRoutes);
-app.use('/', defaultJobs);
+// app.use('/', defaultJobs);
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).render('error', {
         message: "This is not the URL you are looking for!"

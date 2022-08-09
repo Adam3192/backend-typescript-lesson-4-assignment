@@ -13,11 +13,11 @@ const getAllJobs = (req, res, next) => {
 };
 exports.getAllJobs = getAllJobs;
 const getJobById = (req, res, next) => {
-    // get the route parameter called "name"
-    let jobName = req.params.id;
-    // use the find method to get the job that matches the provided name
+    // get the route parameter called "id"
+    let jobId = req.params.id;
+    // use the find method to get the job that matches the provided id
     let foundJob = job_data_1.jobList.find(job => {
-        return job.jobTitle === jobName;
+        return job.id === parseInt(jobId);
     });
     // if the job was not found, return not found
     if (!foundJob) {

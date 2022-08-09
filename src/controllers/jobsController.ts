@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import { Job } from "../models/Job";
 import { jobList } from '../models/job-data';
 
 export const defaultJobs: RequestHandler = (req, res, next) => {
@@ -14,12 +13,12 @@ export const getAllJobs: RequestHandler = (req, res, next) => {
 
 export const getJobById: RequestHandler = (req, res, next) => {
 
-    // get the route parameter called "name"
-    let jobName = req.params.id;
+    // get the route parameter called "id"
+    let jobId = req.params.id;
 
-    // use the find method to get the job that matches the provided name
+    // use the find method to get the job that matches the provided id
     let foundJob = jobList.find(job => {
-        return job.jobTitle === jobName;
+        return job.id === parseInt(jobId);
     })
 
     // if the job was not found, return not found
