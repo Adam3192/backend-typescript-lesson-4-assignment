@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const jobRoutes_1 = __importDefault(require("./routes/jobRoutes"));
+const jobsController_1 = require("./controllers/jobsController");
 const path_1 = __importDefault(require("path"));
 const morgan_1 = __importDefault(require("morgan"));
 const app = (0, express_1.default)();
@@ -18,7 +19,7 @@ app.set('view options', { layout: 'layout' });
 app.use(express_1.default.static(path_1.default.join(__dirname, '../src/public')));
 // TODO: Add routing middleware here
 app.use('/jobs', jobRoutes_1.default);
-// app.use('/', defaultJobs);
+app.use('/', jobsController_1.defaultJobs);
 app.use((req, res, next) => {
     res.status(404).render('error', {
         message: "This is not the URL you are looking for!"
